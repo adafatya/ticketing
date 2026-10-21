@@ -1,4 +1,6 @@
-import { userRoleEnum } from "@/db/schema";
+import { userRoleEnum, users } from "@/db/schema";
+import { db } from "@/db";
+import { eq } from "drizzle-orm";
 
 export type UserRole = (typeof userRoleEnum.enumValues)[number];
 
@@ -47,3 +49,21 @@ export function resolveUserOnLogin({
     isNew: true,
   };
 }
+
+export async function getFreshUserRole(
+  discordId: string,
+): Promise<UserRole | null> {
+  if (!discordId) return null;
+  try {
+    const [user] = await db
+      .select({ role: users.role })
+      .from(users)
+      .where(eq(users.discordId, discordId))
+      .limit(1);
+    return user ? user.role : null;
+  } catch (err) {
+    console.error("Error fetching fresh user role from database:", err);
+    return null;
+  }
+}
+
