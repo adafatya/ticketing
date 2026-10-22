@@ -5,7 +5,7 @@ import { getFreshUserRole } from "@/lib/auth-helpers";
 import { desc } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { UserTable } from "./user-table";
-import Link from "next/link";
+import { Navbar } from "@/components/navbar";
 
 export default async function AdminUsersPage() {
   const session = await auth();
@@ -41,13 +41,21 @@ export default async function AdminUsersPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar
+        user={{
+          id: session.user.id || "",
+          name: session.user.name,
+          avatar: session.user.image,
+          discordId: session.user.discordId,
+          role,
+        }}
+      />
+
       <header className="border-b border-gray-200 bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="text-sm font-semibold text-gray-500 hover:text-gray-900">
-              ← Kembali ke Dashboard
-            </Link>
+          <div>
             <h1 className="text-xl font-bold text-gray-900">Manajemen Pengguna & Role</h1>
+            <p className="text-xs text-gray-500">Kelola role tim IT internal dan lakukan pra-registrasi.</p>
           </div>
           <div className="flex items-center gap-3">
             <span className="text-xs font-medium text-purple-700 bg-purple-100 px-2.5 py-1 rounded-full border border-purple-200">
