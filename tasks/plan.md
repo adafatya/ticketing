@@ -32,12 +32,12 @@ Q7 (validasi QA untuk semua tipe?): dikonfirmasi — tiket bertipe "Pertanyaan" 
 ## Task List (Index per Fase)
 
 ### Fase 1 — Fondasi (tasks/fase-1-fondasi.md)
-- [ ] T01: Setup repo, tooling, CI dasar
-- [ ] T02: Skema database & migrasi awal
-- [ ] T03: Login Discord OAuth2 (Auth.js)
-- [ ] T04: Middleware role + halaman "Menunggu Aktivasi"
-- [ ] T05: Manajemen User & Role (Admin UI)
-- [ ] T06: Master Data Project (CRUD)
+- [x] T01: Setup repo, tooling, CI dasar
+- [x] T02: Skema database & migrasi awal
+- [x] T03: Login Discord OAuth2 (Auth.js)
+- [x] T04: Middleware role + halaman "Menunggu Aktivasi"
+- [x] T05: Manajemen User & Role (Admin UI)
+- [x] T06: Master Data Project (CRUD)
 - [ ] CHECKPOINT 1
 
 ### Fase 2 — Tiket (tasks/fase-2-tiket.md)
